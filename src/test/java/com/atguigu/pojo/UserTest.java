@@ -1,6 +1,8 @@
 package com.atguigu.pojo;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,6 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @Description:
  */
 class UserTest {
+
+    private Logger logger = LoggerFactory.getLogger(UserTest.class);
+
     @Test
     public void testUserObject() {
         // 加载Spring配置文件，对象创建
@@ -26,6 +31,8 @@ class UserTest {
 
         // 使用对象调用方法进行测试
         user.add();
+
+        logger.info("执行调用成功！");
     }
 
     /**
