@@ -1,5 +1,6 @@
 package com.atguigu.di;
 
+import com.atguigu.dimap.Student;
 import com.atguigu.ditest.Dept;
 import com.atguigu.ditest.Emp;
 import org.junit.jupiter.api.Test;
@@ -33,5 +34,12 @@ public class BeanDiTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-dilist.xml");
         Dept dept = ctx.getBean("dept", Dept.class);
         dept.info();
+    }
+
+    @Test
+    public void testMapProperty() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-dimap.xml");
+        Student student = ctx.getBean("student", Student.class);
+        student.run();
     }
 }
