@@ -162,8 +162,6 @@ Java中，instanceof运算符用于判断前面的对象是否是后面的类、
 
 ## 引入外部属性文件
 
-
-
 # bean的作用域
 
 scop: 
@@ -193,3 +191,8 @@ webApplicationContext环境中还会有另外几个作用域（但不常用）
 7. bean对象销毁，配置指定销毁的方法
 
 8. IOC容器关闭了
+
+# FactoryBean
+
+经常用于整合第三方框架
+
