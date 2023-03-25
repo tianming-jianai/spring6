@@ -3,6 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- 1. 获取bean演示，user对象创建 -->
     <bean id="user" class="com.atguigu.pojo.User"></bean>
     <!--<bean id="user2" class="com.atguigu.pojo.User"></bean>-->
+
+    <!-- 2. 一个接口实现类获取过程 -->
+    <bean id="userDaoImpl" class="com.atguigu.pojo.UserDaoImpl"></bean>
+    <!--<bean id="personDaoImpl" class="com.atguigu.pojo.PersonDaoImpl"></bean>-->
 </beans>
