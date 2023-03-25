@@ -18,8 +18,8 @@ public class UserController {
 
     // 注入service
     // 第一种方式：属性注入
-    // @Autowired
-    // private UserService userService;
+    @Autowired
+    private UserService userService;
 
     // 第二种：set方式注入
     // private UserService userService;
@@ -50,9 +50,6 @@ public class UserController {
     // public UserController(UserService userService) {
     //     this.userService = userService;
     // }
-
-    @Resource(name = "userService")
-    private UserService userService;
 
 
     public void addUser() {

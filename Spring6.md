@@ -335,4 +335,13 @@ JDK扩展包中的，该注解是标准注解，更加具有通用性。@Autowir
 
 ## Spring全注解开发
 
+```java
+@Configuration
+@ComponentScan("com.atguigu")
+public class SpringConfig {
+}
 
+ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
+UserController controller = ctx.getBean("userController", UserController.class);
+controller.addUser();
+```
