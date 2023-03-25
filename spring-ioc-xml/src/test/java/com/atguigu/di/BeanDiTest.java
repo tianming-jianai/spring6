@@ -42,4 +42,11 @@ public class BeanDiTest {
         Student student = ctx.getBean("student", Student.class);
         student.run();
     }
+
+    @Test
+    public void testUtilRefProperty() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-diref.xml");
+        Student student = ctx.getBean("student", Student.class);
+        student.run();
+    }
 }

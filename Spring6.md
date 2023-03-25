@@ -73,14 +73,14 @@ Java中，instanceof运算符用于判断前面的对象是否是后面的类、
 ```xml
 <!-- 1. set注入 -->
 <bean id="book" class="com.atguigu.di.Book">
-	<property name="bname" value="vue"/>
-	<property name="author" value="尚硅谷"/>
+    <property name="bname" value="vue"/>
+    <property name="author" value="尚硅谷"/>
 </bean>
 
 <!-- 2. 构造器注入 -->
 <bean id="bookCon" class="com.atguigu.di.Book">
-	<constructor-arg name="bname" value="java开发"/>
-	<constructor-arg name="author" value="尚硅谷"/>
+    <constructor-arg name="bname" value="java开发"/>
+    <constructor-arg name="author" value="尚硅谷"/>
 </bean>
 ```
 
@@ -99,7 +99,7 @@ Java中，instanceof运算符用于判断前面的对象是否是后面的类、
 <!--<property name="others">
     <null/>
 </property>-->
-<!--<property name="others" value="&lt;&gt;"/>-->
+<!--<property name="others" value="<>"/>-->
 <property name="others">
     <value><![CDATA[a < b]]></value>
 </property>
@@ -116,37 +116,37 @@ Java中，instanceof运算符用于判断前面的对象是否是后面的类、
 ```xml
 <!--第一种方式：引入外部bean-->
 <bean id="dept" class="com.atguigu.ditest.Dept">
-	<property name="dname" value="安保部"/>
+    <property name="dname" value="安保部"/>
 </bean>
 <bean id="emp" class="com.atguigu.ditest.Emp">
-	<!-- 普通属性注入 -->
-	<property name="ename" value="lucy"/>
-	<property name="age" value="50"/>
-	<!-- 注入对象类属性
-	 private Dept dept; -->
-	<property name="dept" ref="dept"/>
+    <!-- 普通属性注入 -->
+    <property name="ename" value="lucy"/>
+    <property name="age" value="50"/>
+    <!-- 注入对象类属性
+     private Dept dept; -->
+    <property name="dept" ref="dept"/>
 </bean>
 
 <!--第二种方式：引入外部bean-->
 <bean id="emp2" class="com.atguigu.ditest.Emp">
-	<property name="ename" value="mary"/>
-	<property name="age" value="20"/>
-	<property name="dept">
-		<bean id="dept2" class="com.atguigu.ditest.Dept">
-			<property name="dname" value="财务部"/>
-		</bean>
-	</property>
+    <property name="ename" value="mary"/>
+    <property name="age" value="20"/>
+    <property name="dept">
+        <bean id="dept2" class="com.atguigu.ditest.Dept">
+            <property name="dname" value="财务部"/>
+        </bean>
+    </property>
 </bean>
 
 <!--第三种方式：级联赋值-->
 <bean id="dept3" class="com.atguigu.ditest.Dept">
-	<property name="dname" value="技术研发部"/>
+    <property name="dname" value="技术研发部"/>
 </bean>
 <bean id="emp3" class="com.atguigu.ditest.Emp">
-	<property name="ename" value="tom"/>
-	<property name="age" value="30"/>
-	<property name="dept" ref="dept3"/>
-	<property name="dept.dname" value="测试部"/>
+    <property name="ename" value="tom"/>
+    <property name="age" value="30"/>
+    <property name="dept" ref="dept3"/>
+    <property name="dept.dname" value="测试部"/>
 </bean>
 ```
 
@@ -155,3 +155,5 @@ Java中，instanceof运算符用于判断前面的对象是否是后面的类、
 ## 依赖注入-集合属性
 
 ## 依赖注入-map属性
+
+## 依赖注入-引入集合bean
