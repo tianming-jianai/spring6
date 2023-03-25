@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1. set注入 -->
+    <bean id="book" class="com.atguigu.di.Book">
+        <property name="bname" value="vue"/>
+        <property name="author" value="尚硅谷"/>
+    </bean>
+
+    <!-- 2. 构造器注入 -->
+    <bean id="bookCon" class="com.atguigu.di.Book">
+        <constructor-arg name="bname" value="java开发"/>
+        <constructor-arg name="author" value="尚硅谷"/>
+    </bean>
+</beans>
