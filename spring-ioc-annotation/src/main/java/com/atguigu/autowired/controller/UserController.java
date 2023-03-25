@@ -4,6 +4,8 @@ import com.atguigu.autowired.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.annotation.Resource;
+
 /**
  * @BelongsProject: spring6
  * @BelongsPackage: com.atguigu.auto.controller
@@ -43,11 +45,14 @@ public class UserController {
     // }
 
     // 第五种：只有一个有参构造函数，无注解
-    private UserService userService;
+    // private UserService userService;
+    //
+    // public UserController(UserService userService) {
+    //     this.userService = userService;
+    // }
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    @Resource(name = "userService")
+    private UserService userService;
 
 
     public void addUser() {

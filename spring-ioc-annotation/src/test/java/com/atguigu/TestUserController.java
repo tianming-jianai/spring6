@@ -14,12 +14,22 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class TestUserController {
     /**
-     *
+     * @autowired
      */
     @Test
-    public void test(){
+    public void testAutowired() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
-        UserController controller = ctx.getBean(UserController.class);
+        com.atguigu.autowired.controller.UserController controller = ctx.getBean(com.atguigu.autowired.controller.UserController.class);
+        controller.addUser();
+    }
+
+    /**
+     * @Resource
+     */
+    @Test
+    public void testResource() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
+        com.atguigu.resource.controller.UserController controller = ctx.getBean(com.atguigu.resource.controller.UserController.class);
         controller.addUser();
     }
 }

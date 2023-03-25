@@ -271,6 +271,8 @@ text http://www.springframework.org/schema/context/spring-context.xsd">
 
 默认根据类型byType匹配
 
+使用范围：属性、setter方法、构造方法、构造方法参数
+
 ```java
 @Controller
 public class UserController {
@@ -310,6 +312,20 @@ public class UserController {
         this.userService = userService;
     }
 ```
+
+## @Resource注入
+
+JDK扩展包中的，该注解是标准注解，更加具有通用性。@Autowired是Spring框架自己的
+
+@Resource注解默认根据名称装配byName，未指定name时，使用属性作为name。通过name找不到的话会自动启动，通过类型byType装配。
+
+@Autowired注解默认根据类型装配byType，如果想根据名称装配，需要配合@Qualifier注解一起用。
+
+使用范围：属性、setter方法
+
+@Resource属于JDK扩展包，所以不在JDK当中，需要额外引入一下依赖，【高于JDK11或低于JDK8需要引入一下依赖】
+
+```xml
 
 ## Spring全注解开发
 

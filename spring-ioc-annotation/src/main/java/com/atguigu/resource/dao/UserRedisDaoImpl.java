@@ -1,4 +1,4 @@
-package com.atguigu.autowired.dao;
+package com.atguigu.resource.dao;
 
 import org.springframework.stereotype.Repository;
 
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
  * @CreateTime: 2023/3/25 19:51
  * @Description:
  */
-@Repository("userRedisDaoImpl")
+@Repository("myUserRedisDaoImpl")
 public class UserRedisDaoImpl implements UserDao {
     @Override
     public void addUser() {
-        System.out.println("dao redis ...");
+        System.out.println("redis ...");
     }
 }

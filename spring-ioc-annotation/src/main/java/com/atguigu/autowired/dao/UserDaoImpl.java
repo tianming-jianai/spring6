@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * @CreateTime: 2023/3/25 16:33
  * @Description:
  */
-@Repository
+@Repository("userDaoImpl")
 public class UserDaoImpl implements UserDao {
     @Override
     public void addUser() {
