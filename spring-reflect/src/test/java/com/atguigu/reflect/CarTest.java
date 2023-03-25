@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -77,5 +78,33 @@ class CarTest {
             System.out.println(field.getName());
         }
         System.out.println(car);
+    }
+
+    /**
+     * 4。 获取方法
+     */
+    @Test
+    public void test4() throws Exception {
+        Car car = new Car("奔驰", 10, "黑色");
+        Class clazz = car.getClass();
+        // public
+        for (Method method : clazz.getMethods()) {
+            if (method.getName().equals("toString")) {
+                String invoke = (String) method.invoke(car);
+                System.out.println(invoke);
+            }
+            System.out.println(method.getName());
+        }
+
+        System.out.println("---------");
+
+        // private
+        for (Method method : clazz.getDeclaredMethods()) {
+            if (method.getName().equals("run")) {
+                method.setAccessible(true);
+                method.invoke(car);
+            }
+            System.out.println(method.getName());
+        }
     }
 }
