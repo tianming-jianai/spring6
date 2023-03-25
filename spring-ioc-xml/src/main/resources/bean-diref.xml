@@ -3,12 +3,17 @@
         xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:util="http://www.springframework.org/schema/util"
+        xmlns:p="http://www.springframework.org/schema/p"
         xsi:schemaLocation="
        http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/util
        http://www.springframework.org/schema/util/spring-util.xsd
 ">
+
+    <!--p命名空间注入-->
+    <bean id="studentp" class="com.atguigu.dimap.Student"
+    p:sid="100" p:sname="mary" p:lessonList-ref="lessonList" p:teacherMap-ref="tearcherMap"></bean>
 
     <!--
         1. 创建3个对象
@@ -45,13 +50,16 @@
     </util:list>
     <util:map id="tearcherMap">
         <entry>
-            <key><value>10010</value></key>
+            <key>
+                <value>10010</value>
+            </key>
             <ref bean="teacher1"></ref>
         </entry>
         <entry>
-            <key><value>10086</value></key>
+            <key>
+                <value>10086</value>
+            </key>
             <ref bean="teacher2"></ref>
         </entry>
-
     </util:map>
 </beans>

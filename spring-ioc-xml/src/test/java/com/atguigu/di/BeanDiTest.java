@@ -49,4 +49,12 @@ public class BeanDiTest {
         Student student = ctx.getBean("student", Student.class);
         student.run();
     }
+
+
+    @Test
+    public void testp() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-diref.xml");
+        Student student = ctx.getBean("studentp", Student.class);
+        student.run();
+    }
 }
