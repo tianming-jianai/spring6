@@ -10,6 +10,7 @@ package com.atguigu.di;
 public class Book {
     private String bname;
     private String author;
+    private String others;
 
     public Book() {
         System.out.println("无参构造执行了...");
@@ -29,11 +30,16 @@ public class Book {
         this.author = author;
     }
 
+    public void setOthers(String others) {
+        this.others = others;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "bname='" + bname + '\'' +
                 ", author='" + author + '\'' +
+                ", others='" + others + '\'' +
                 '}';
     }
 

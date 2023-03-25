@@ -7,6 +7,13 @@
     <bean id="book" class="com.atguigu.di.Book">
         <property name="bname" value="vue"/>
         <property name="author" value="尚硅谷"/>
+        <!--<property name="others">
+            <null/>
+        </property>-->
+        <!--<property name="others" value="&lt;&gt;"/>-->
+        <property name="others">
+            <value><![CDATA[a < b]]></value>
+        </property>
     </bean>
 
     <!-- 2. 构造器注入 -->
