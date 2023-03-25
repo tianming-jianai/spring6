@@ -13,7 +13,7 @@
 
     <!--p命名空间注入-->
     <bean id="studentp" class="com.atguigu.dimap.Student"
-    p:sid="100" p:sname="mary" p:lessonList-ref="lessonList" p:teacherMap-ref="tearcherMap"></bean>
+          p:sid="100" p:sname="mary" p:lessonList-ref="lessonList" p:teacherMap-ref="tearcherMap"></bean>
 
     <!--
         1. 创建3个对象

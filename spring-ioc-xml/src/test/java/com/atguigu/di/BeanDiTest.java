@@ -50,7 +50,6 @@ public class BeanDiTest {
         student.run();
     }
 
-
     @Test
     public void testp() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-diref.xml");
