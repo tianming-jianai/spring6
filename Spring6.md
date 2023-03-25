@@ -67,3 +67,87 @@ Bean管理：Bean对象的创建，以及Bean对象中属性的赋值（或者�
 根据类型来获取bean时，在满足bean唯一性的前提下，其实只是看：对象instance of指定的类型，的返回结果，只要返回的是true就可以认定为何类型匹配，能够获取到。
 
 Java中，instanceof运算符用于判断前面的对象是否是后面的类、实现类的实例。如果返回true，否则返回false。也就是说：用instance of关键字做判断时，instance of操作符的左右操作必须有继承或实现关系。
+
+## setter/constructor注入
+
+```xml
+<!-- 1. set注入 -->
+<bean id="book" class="com.atguigu.di.Book">
+	<property name="bname" value="vue"/>
+	<property name="author" value="尚硅谷"/>
+</bean>
+
+<!-- 2. 构造器注入 -->
+<bean id="bookCon" class="com.atguigu.di.Book">
+	<constructor-arg name="bname" value="java开发"/>
+	<constructor-arg name="author" value="尚硅谷"/>
+</bean>
+```
+
+## 注入特殊值处理
+
+- 字面量
+
+- null
+
+- xml实体
+
+- CDATA
+
+```xml
+<property name="author" value="尚硅谷"/>
+<!--<property name="others">
+    <null/>
+</property>-->
+<!--<property name="others" value="&lt;&gt;"/>-->
+<property name="others">
+    <value><![CDATA[a < b]]></value>
+</property>
+```
+
+## 特殊类型属性注入（对象）
+
+- 方式一：引用外部bean
+
+- 方式二：内部bean
+
+- 方式三：级联属性赋值
+
+```xml
+<!--第一种方式：引入外部bean-->
+<bean id="dept" class="com.atguigu.ditest.Dept">
+	<property name="dname" value="安保部"/>
+</bean>
+<bean id="emp" class="com.atguigu.ditest.Emp">
+	<!-- 普通属性注入 -->
+	<property name="ename" value="lucy"/>
+	<property name="age" value="50"/>
+	<!-- 注入对象类属性
+	 private Dept dept; -->
+	<property name="dept" ref="dept"/>
+</bean>
+
+<!--第二种方式：引入外部bean-->
+<bean id="emp2" class="com.atguigu.ditest.Emp">
+	<property name="ename" value="mary"/>
+	<property name="age" value="20"/>
+	<property name="dept">
+		<bean id="dept2" class="com.atguigu.ditest.Dept">
+			<property name="dname" value="财务部"/>
+		</bean>
+	</property>
+</bean>
+
+<!--第三种方式：级联赋值-->
+<bean id="dept3" class="com.atguigu.ditest.Dept">
+	<property name="dname" value="技术研发部"/>
+</bean>
+<bean id="emp3" class="com.atguigu.ditest.Emp">
+	<property name="ename" value="tom"/>
+	<property name="age" value="30"/>
+	<property name="dept" ref="dept3"/>
+	<property name="dept.dname" value="测试部"/>
+</bean>
+```
+
+## 依赖注入-数组类型属性
