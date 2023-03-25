@@ -1,5 +1,6 @@
 package com.atguigu.di;
 
+import com.atguigu.ditest.Dept;
 import com.atguigu.ditest.Emp;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -25,5 +26,12 @@ public class BeanDiTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-diarray.xml");
         Emp emp = ctx.getBean("emp", Emp.class);
         System.out.println(emp);
+    }
+
+    @Test
+    public void testListProperty() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-dilist.xml");
+        Dept dept = ctx.getBean("dept", Dept.class);
+        dept.info();
     }
 }

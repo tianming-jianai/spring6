@@ -1,5 +1,7 @@
 package com.atguigu.ditest;
 
+import java.util.List;
+
 /**
  * @BelongsProject: spring6
  * @BelongsPackage: com.atguigu.ditest
@@ -10,6 +12,8 @@ package com.atguigu.ditest;
 public class Dept {
     private String dname;
 
+    private List<Emp> empList;
+
     public String getDname() {
         return dname;
     }
@@ -18,8 +22,19 @@ public class Dept {
         this.dname = dname;
     }
 
+    public List<Emp> getEmpList() {
+        return empList;
+    }
+
+    public void setEmpList(List<Emp> empList) {
+        this.empList = empList;
+    }
+
     public void info() {
         System.out.println("部门名称：" + dname);
+        for (Emp e : empList) {
+            System.out.println(e);
+        }
     }
 
     @Override
