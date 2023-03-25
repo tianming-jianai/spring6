@@ -2,6 +2,7 @@ package com.atguigu.reflect;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,5 +31,29 @@ class CarTest {
         // 实例化
         Car car = (Car) clazz3.getDeclaredConstructor().newInstance();
         System.out.println(car);
+    }
+
+    /**
+     * 2. 获取构造方法
+     */
+    @Test
+    public void test2() throws Exception {
+        Class<Car> clazz = Car.class;
+        Constructor<?>[] constructors = clazz.getDeclaredConstructors();
+        for (Constructor c : constructors) {
+            System.out.println("构造方法：" + c.getName() + "，参数个数：" + c.getParameterCount());
+        }
+
+        // 指定有参构造创建对象
+        // public
+        // Constructor<Car> c1 = clazz.getConstructor(String.class, int.class, String.class);
+        // Car car = c1.newInstance("夏利", 10, "红色");
+        // System.out.println(car);
+
+        // private
+        Constructor<Car> c2 = clazz.getDeclaredConstructor(String.class, int.class, String.class);
+        c2.setAccessible(true);
+        Car car2 = c2.newInstance("夏利", 10, "红色");
+        System.out.println(car2);
     }
 }
