@@ -326,6 +326,12 @@ JDK扩展包中的，该注解是标准注解，更加具有通用性。@Autowir
 @Resource属于JDK扩展包，所以不在JDK当中，需要额外引入一下依赖，【高于JDK11或低于JDK8需要引入一下依赖】
 
 ```xml
+<dependency>
+	<groupId>jakarta.annotation</groupId>
+	<artifactId>jakarta.annotation-api</artifactId>
+	<version>2.1.1</version>
+</dependency>
+```
 
 ## Spring全注解开发
 
