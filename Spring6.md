@@ -202,4 +202,73 @@ webApplicationContext环境中还会有另外几个作用域（但不常用）
 
 byType类型、byName名称
 
+# 基于注解管理Bean
+
+## 搭建子模块spring-ioc-annotation
+
+## 开启组件扫描
+
+Spring默认不使用注解装配Bean，因此我们需要在Spring的xml配置中，通过context:component-scan元素开启Spring Beans自动扫描功能。开启此功能之后，Spring会自动从扫描指定的包（base-package属性设置）及其子包下的所有类，如果类上使用了@Component注解，就将该类装配到容器中。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/b
+eans http://www.springframework.org/schema/beans/spring-beans
+.xsd http://www.springframework.org/schema/con
+text http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启组件扫描-->
+    <context:component-scan base-package="com.atguigu"/>
+</beans>
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/b
+eans http://www.springframework.org/schema/beans/spring-beans
+.xsd http://www.springframework.org/schema/con
+text http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启组件扫描-->
+    <!--情况一：最基本的扫描方式-->
+    <context:component-scan base-package="com.atguigu"/>
+    <!--情况二：指定要排除的组件-->
+    <context:component-scan base-package="com.atguigu">
+        <!--context:exclude-filter: 指定排除规则-->
+        <!--
+            type: 设置排除或包含的依据
+            type="annotation"，根据注解排除，expression中设置要排除的注解的全类名
+            type="assignable"，根据类型排除，expression中设置要排除的类型的全类名
+        -->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <!--<context:exclude-filter type="assignable" expression="com.atguigu.pojo.User"/>-->
+    </context:component-scan>
+    <!--情况三：只扫描指定组件-->
+    <context:component-scan base-package="com.atguigu" use-default-filters="false">
+        <!--context:include-filter标签：指定在原有扫描规则的基础上追加的规则-->
+        <!--use-default-filters属性：取值false表示关闭默认扫描规则-->
+        <!--此时必须设置use-default-filters="false",因为默认规则即扫描指定包下所有类-->
+        <!--
+            type: 设置排除或包含的依据
+            type="annotation"，根据注解排除，expression中设置要排除的注解的全类名
+            type="assignable"，根据类型排除，expression中设置要排除的类型的全类名
+        -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <!--<context:include-filter type="assignable" expression="com.atguigu.pojo.User"/>-->
+    </context:component-scan>
+</beans>
+```
+
+
+
+## Spring全注解开发
+
 
