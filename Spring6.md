@@ -161,3 +161,17 @@ Java中，instanceof运算符用于判断前面的对象是否是后面的类、
 ## p命名空间
 
 ## 引入外部属性文件
+
+
+
+# bean的作用域
+
+scop: 
+
+- singleton(默认)单实例, IOC容器初始化时创建
+
+- prototype多实例，获取bean时创建
+
+webApplicationContext环境中还会有另外几个作用域（但不常用）
+
+- request/session
