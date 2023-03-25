@@ -196,3 +196,10 @@ webApplicationContext环境中还会有另外几个作用域（但不常用）
 
 经常用于整合第三方框架
 
+# 基于Xml自动装配
+
+根据指定的策略，在IOC容器中匹配一个bean，自动为指定的bean中所依赖的类类型属性赋值
+
+byType类型、byName名称
+
+
