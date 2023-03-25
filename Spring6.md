@@ -267,7 +267,49 @@ text http://www.springframework.org/schema/context/spring-context.xsd">
 </beans>
 ```
 
+## @Autowired注入
 
+默认根据类型byType匹配
+
+```java
+@Controller
+public class UserController {
+
+    // 注入service
+    // 第一种方式：属性注入
+    @Autowired
+    private UserService userService;
+
+    // 第二种：set方式注入
+    private UserService userService;
+    
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    // 第三种：构造方法注入
+    private UserService userService;
+    
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    // 第四种：形参上注入
+    private UserService userService;
+    
+    public UserController(@Autowired UserService userService) {
+        this.userService = userService;
+    }
+
+    // 第五种：只有一个有参构造函数，无注解
+    private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+```
 
 ## Spring全注解开发
 
