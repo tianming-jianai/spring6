@@ -14,9 +14,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class BeanDiTest {
     @Test
-    public void test() {
+    public void testObjectProperty() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-ditest.xml");
         Emp emp = ctx.getBean("emp3", Emp.class);
+        System.out.println(emp);
+    }
+
+    @Test
+    public void testArrayProperty() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-diarray.xml");
+        Emp emp = ctx.getBean("emp", Emp.class);
         System.out.println(emp);
     }
 }

@@ -1,5 +1,7 @@
 package com.atguigu.ditest;
 
+import java.util.Arrays;
+
 /**
  * @BelongsProject: spring6
  * @BelongsPackage: com.atguigu.ditest
@@ -12,6 +14,8 @@ public class Emp {
     private Dept dept;
     private String ename;
     private String age;
+    private String[] hobby;
+
 
     public Dept getDept() {
         return dept;
@@ -37,6 +41,14 @@ public class Emp {
         this.age = age;
     }
 
+    public String[] getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String[] hobby) {
+        this.hobby = hobby;
+    }
+
     public void work() {
         System.out.println(ename + " emp work ..." + age);
     }
@@ -47,6 +59,7 @@ public class Emp {
                 "dept=" + dept +
                 ", ename='" + ename + '\'' +
                 ", age='" + age + '\'' +
+                ", hobby=" + Arrays.toString(hobby) +
                 '}';
     }
 }
