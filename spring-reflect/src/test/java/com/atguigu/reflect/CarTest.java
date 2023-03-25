@@ -3,6 +3,7 @@ package com.atguigu.reflect;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -55,5 +56,26 @@ class CarTest {
         c2.setAccessible(true);
         Car car2 = c2.newInstance("夏利", 10, "红色");
         System.out.println(car2);
+    }
+
+    /**
+     * 3. 获取属性
+     */
+    @Test
+    public void test3() throws Exception {
+        Class<Car> clazz = Car.class;
+        Car car = clazz.getDeclaredConstructor().newInstance();
+        // 获取所有public属性
+        // Field[] fields = clazz.getFields();
+        // 获取所有属性（包含私有属性）
+        Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fields) {
+            if (field.getName().equals("name")) {
+                field.setAccessible(true);
+                field.set(car, "五菱宏光");
+            }
+            System.out.println(field.getName());
+        }
+        System.out.println(car);
     }
 }
