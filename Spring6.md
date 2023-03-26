@@ -501,7 +501,7 @@ public class AnnotationApplicationContext implements ApplicationContext {
 
 ## 代理模式
 
-二十三种设计模式中的一种，属于结构型模式。它的作用就是通过提供一个代理类，让我们再调用目标方法的时候，不再是直接对目标方法进行调用，而是通过代理类间接调用。让不属于目标方法核心逻辑的代码从目标方法中剥离出来--解耦。调用目标方法时先调用代理对象的方法，减少对目标方法的调用和打扰，同时让附加功能能够集中在一起也有利于统一维护。
+二十三种设计模式中的一种，属于结构型模式。它的作用就是通过提供一个代理类，让我们再调用目标方法的时候，不再是直接对目标方法进行调用，而是通过代理类间接调用。让不属于目标方法核心逻辑的代码从目标方法中剥离出来 -- **解耦**。调用目标方法时先调用代理对象的方法，减少对目标方法的调用和打扰，同时让附加功能能够集中在一起也有利于统一维护。
 
 ### 静态代理
 
@@ -511,6 +511,49 @@ public class AnnotationApplicationContext implements ApplicationContext {
 
 ### 动态代理
 
+```java
+/**
+ * @BelongsProject: spring6
+ * @BelongsPackage: com.atguigu.aop
+ * @author: 张世罡
+ * @CreateTime: 2023/3/26 23:35
+ * @Description:
+ */
+public class ProxyFactory {
 
+    // 目标对象
+    private Object target;
+
+    public ProxyFactory(Object target) {
+        this.target = target;
+    }
+
+    // 返回代理对象
+    public Object getProxy() {
+        /**
+         * Proxy.newProxyInstance()
+         * 有是三个参数：
+         * 1. ClassLoader：加载动态生成代理类的加载器
+         * 2. Class[] interfaces：目标对象实现的所有接口的class类型数组
+         * 3. InvocationHandler：设置代理对象实现目标对象方法的过程
+         */
+        ClassLoader classLoader = this.target.getClass().getClassLoader();
+        Class<?>[] interfaces = this.target.getClass().getInterfaces();
+        InvocationHandler invocationHandler = new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                // 方法调用前输出
+                System.out.println("【动态代理】【日志】" + method.getName() + "方法开始了，参数是：" + Arrays.toString(args));
+                // 调用目标方法
+                Object result = method.invoke(target, args);
+                // 方法调用后输出
+                System.out.println("【动态代理】【日志】" + method.getName() + "方法结束了，结果是：" + result);
+                return result;
+            }
+        };
+        return Proxy.newProxyInstance(classLoader, interfaces, invocationHandler);
+    }
+}
+```
 
 
