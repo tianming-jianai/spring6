@@ -1,9 +1,11 @@
 package com.atguigu.bean;
 
 import com.atguigu.anno.Bean;
+import com.atguigu.anno.DI;
 
 import java.io.File;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -50,8 +52,39 @@ public class AnnotationApplicationContext implements ApplicationContext {
                 // 包扫描
                 loadBean(new File(filePath));
             }
+            loadDI();
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 属性注入
+     */
+    private void loadDI() {
+        // 实例化对象在beanFactory的map集合里面
+        // 1. 遍历beanFactory
+        for (Map.Entry<Class, Object> entry : beanFactory.entrySet()) {
+            // 2. 获取map集合每个对象（value），每个对象属性获取到
+            Object obj = entry.getValue();
+            // 获取对象Class
+            Class clazz = obj.getClass();
+            // 3. 遍历每个对象属性数组，得到每个属性
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields) {
+                // 4. 判断属性上面是否有@DI注解
+                DI di = field.getAnnotation(DI.class);
+                if (di != null) {
+                    // 如果是私有属性，设置可以访问
+                    field.setAccessible(true);
+                    // 5. 如果有@DI注解，把对象进行设置
+                    try {
+                        field.set(obj, beanFactory.get(field.getType()));
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
         }
     }
 

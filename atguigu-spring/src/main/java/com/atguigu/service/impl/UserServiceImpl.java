@@ -22,6 +22,6 @@ public class UserServiceImpl implements UserService {
     public void add() {
         System.out.println("service add ...");
         // 调用dao的方法
-        // userDao.add();
+        userDao.add();
     }
 }
