@@ -13,6 +13,7 @@
         <module>spring-ioc-xml</module>
         <module>spring-ioc-annotation</module>
         <module>spring-reflect</module>
+        <module>atguigu-spring</module>
     </modules>
 
     <properties>
