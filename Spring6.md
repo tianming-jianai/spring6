@@ -345,3 +345,25 @@ ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.cla
 UserController controller = ctx.getBean("userController", UserController.class);
 controller.addUser();
 ```
+
+# 手写IOC
+
+## 步骤分析
+
+- 第一步：创建子模块：guigu-spring
+
+- 第二步：创建测试类：service,dao
+
+- 第三步：创建两个注解：@Bean创建对象/@DI属性注入
+
+- 第四步：创建bean容器接口ApplicationContext，定义方法，返回对象
+
+- 第五步：实现bean容器接口
+  
+  1. 返回对象
+  
+  2. 根据包规则加载bean，比如com.atguigu，扫描com.atguigu这个包里面所有类，看类上面是否有@Bean注解，如果有，把这个类通过反射实例化
+
+
+
+
