@@ -671,6 +671,22 @@ public class SpringJunitTest4 {
 
 # 事务
 
+## JdbcTemplate
+
+
+
+## 声明式事务
+
+
+
+## 基于注解的声明式事务
+
+
+
+## 基于MXL的声明式事务
+
+
+
 # 资源操作：Resource
 
 # 国际化：i18n

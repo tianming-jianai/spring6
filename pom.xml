@@ -16,6 +16,7 @@
         <module>atguigu-spring</module>
         <module>spring-aop</module>
         <module>spring-junit</module>
+        <module>spring-jdbc-tx</module>
     </modules>
 
     <properties>
