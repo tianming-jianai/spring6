@@ -632,6 +632,43 @@ AOP（Aspect Oriented Programming）是一种设计思想，是软件设计领�
 
 # 单元测试Junit
 
+- 整合JUnit5
+
+```java
+// @ExtendWith(SpringExtension.class)
+// @ContextConfiguration("classpath:bean.xml")
+// 相当于上面2个注解
+@SpringJUnitConfig(locations = "classpath:bean.xml")
+class UserTest {
+
+    @Autowired
+    User user;
+
+    @Test
+    public void test() {
+        System.out.println(user);
+        user.run();
+    }
+}
+```
+
+- 整合JUnit4
+
+```java
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:bean.xml")
+public class SpringJunitTest4 {
+    @Autowired
+    private User user;
+
+    @Test
+    public void test() {
+        System.out.println(user);
+        user.run();
+    }
+}
+```
+
 # 事务
 
 # 资源操作：Resource
