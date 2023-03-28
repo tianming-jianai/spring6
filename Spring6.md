@@ -284,7 +284,7 @@ public class UserController {
 
     // 第二种：set方式注入
     private UserService userService;
-    
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -292,7 +292,7 @@ public class UserController {
 
     // 第三种：构造方法注入
     private UserService userService;
-    
+
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
@@ -300,7 +300,7 @@ public class UserController {
 
     // 第四种：形参上注入
     private UserService userService;
-    
+
     public UserController(@Autowired UserService userService) {
         this.userService = userService;
     }
@@ -327,9 +327,9 @@ JDK扩展包中的，该注解是标准注解，更加具有通用性。@Autowir
 
 ```xml
 <dependency>
-	<groupId>jakarta.annotation</groupId>
-	<artifactId>jakarta.annotation-api</artifactId>
-	<version>2.1.1</version>
+    <groupId>jakarta.annotation</groupId>
+    <artifactId>jakarta.annotation-api</artifactId>
+    <version>2.1.1</version>
 </dependency>
 ```
 
@@ -363,8 +363,6 @@ controller.addUser();
   1. 返回对象
   
   2. 根据包规则加载bean，比如com.atguigu，扫描com.atguigu这个包里面所有类，看类上面是否有@Bean注解，如果有，把这个类通过反射实例化
-
-
 
 ```java
 /**
@@ -612,8 +610,6 @@ AOP（Aspect Oriented Programming）是一种设计思想，是软件设计领�
 
 - 代码增强：把特定功能封装到切面类中，看哪里有需要，就往上套，被套用了切面逻辑的方法就被切面给增强了。
 
-  
-
 ### 动态代理分类：JDK动态代理和cglib动态代理
 
 - 当目标类有接口的情况使用JDK动态代理，没有接口时，只能使用cglib动态代理
@@ -634,26 +630,12 @@ AOP（Aspect Oriented Programming）是一种设计思想，是软件设计领�
 
 ### 基于XML的AOP
 
-
-
 # 单元测试Junit
-
-
 
 # 事务
 
-
-
 # 资源操作：Resource
-
-
 
 # 国际化：i18n
 
-
-
 # 数据校验：Validation
-
-
-
-

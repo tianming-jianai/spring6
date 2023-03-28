@@ -8,6 +8,8 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -38,7 +40,7 @@ public class LogAspect {
         System.out.println("Logger -> 后置通知，方法名称：" + methodName);
     }
 
-    @AfterReturning(value = "execution(* com.atguigu.annoaop.CalculatorImpl.*(..))", returning = "result")
+    @AfterReturning(value = "pointcut()", returning = "result")
     public void afterReturning(JoinPoint joinPoint, Object result) {
         String methodName = joinPoint.getSignature().getName();
         System.out.println("Logger -> 返回通知，方法名称：" + methodName + "，返回结果：" + result);
@@ -68,5 +70,9 @@ public class LogAspect {
             System.out.println("环绕通知：目标方法执行完毕执行");
         }
         return result;
+    }
+
+    @Pointcut("execution(* com.atguigu.annoaop.CalculatorImpl.*(..))")
+    public void pointcut() {
     }
 }
