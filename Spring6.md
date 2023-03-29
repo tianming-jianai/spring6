@@ -689,6 +689,22 @@ public class SpringJunitTest4 {
 
 # 资源操作：Resource
 
+Java标准java.net.URL类和各种URL前缀的标准处理程序无法满足所有对low-level资源的访问，比如：没有标准化的URL实现可用于访问需要从类路径或相对于ServletContext获取的资源。并且缺少某些Spring所需要的功能，例如检测某资源是否存在等。而Spring的Resource声明了访问low-level资源的能力。
+
+## Resource的实现类
+
+## Resource类图
+
+## ResourceLoader接口
+
+## ResourceLoaderAware接口
+
+## 使用Resource作为属性
+
+## 应用程序上下文和资源路径
+
+
+
 # 国际化：i18n
 
 # 数据校验：Validation
