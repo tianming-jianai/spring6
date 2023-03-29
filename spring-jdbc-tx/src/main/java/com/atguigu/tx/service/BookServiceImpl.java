@@ -3,6 +3,9 @@ package com.atguigu.tx.service;
 import com.atguigu.tx.dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @BelongsProject: spring6
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service
+@Transactional
 public class BookServiceImpl implements BookService {
     @Autowired
     BookDao bookDao;

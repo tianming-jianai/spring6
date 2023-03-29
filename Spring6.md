@@ -671,6 +671,12 @@ public class SpringJunitTest4 {
 
 # 事务
 
+什么是事务：数据库事务（transaction）是访问并可能操作各种数据项的一个数据库操作序列，这些操作要么全部执行，要么全部不执行，是一个不可分割的工作单位。事务由事务开始与事务结束之间执行的全部数据库操作组成。
+
+- 事务的特性：ACID、原子性、一致性、隔离性、持久性
+
+编程式事务
+
 ## JdbcTemplate
 
 
@@ -680,6 +686,54 @@ public class SpringJunitTest4 {
 
 
 ## 基于注解的声明式事务
+
+#### 准备工作
+
+#### 测试无事务情况
+
+### 加入事务
+
+- 添加事务配置
+
+```xml
+<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<property name="dataSource" ref="druidDataSource"/>
+</bean>
+
+<!--开启事务的注解驱动
+	通过注解@Transactional所标识的方法或标识的类中所有的方法，都会事务被管理器管理事务
+-->
+<!--transaction-manage属性的默认值是transactionManager，如果事务管理器bean的id正好就是这个默认值，则可以省略这个属性-->
+<tx:annotation-driven transaction-manager="transactionManager"/>
+```
+
+- 添加事务注解
+
+- 观察结果
+
+### @Transaction注解标识的位置
+
+### 事务属性：只读
+
+只能查询，不能修改、添加、删除
+
+### 事务属性：超时
+
+在设置超时之内没有完成，抛出异常回滚
+
+### 事务属性：回滚策略
+
+设置哪些异常不回滚
+
+### 事务属性：隔离级别
+
+读问题
+
+### 事务属性：传播行为
+
+事务方法之间调用，事务如何使用
+
+### 全注解配置事务
 
 
 
@@ -691,7 +745,21 @@ public class SpringJunitTest4 {
 
 Java标准java.net.URL类和各种URL前缀的标准处理程序无法满足所有对low-level资源的访问，比如：没有标准化的URL实现可用于访问需要从类路径或相对于ServletContext获取的资源。并且缺少某些Spring所需要的功能，例如检测某资源是否存在等。而Spring的Resource声明了访问low-level资源的能力。
 
+## Resource接口
+
 ## Resource的实现类
+
+### UrlResource访问网络资源
+
+### ClassPathResource访问类路径下资源
+
+### FileSystemResource访问文件系统
+
+### ServletContextResource
+
+### InputStreamResource
+
+### ByteArrayResource
 
 ## Resource类图
 
