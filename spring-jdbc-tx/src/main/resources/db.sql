@@ -6,3 +6,12 @@ CREATE TABLE t_emp
     sex  varchar(2)  DEFAULT NULL COMMENT '性别',
     PRIMARY KEY (id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
+
+
+insert into t_emp values (null, ?, ?, ?);
+
+update t_emp set name=? where id=?;
+
+delete from t_emp where id=?;
+
+select * from t_emp where id = ?;
