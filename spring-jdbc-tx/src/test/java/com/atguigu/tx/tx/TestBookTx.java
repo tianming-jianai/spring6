@@ -25,4 +25,13 @@ public class TestBookTx {
     public void test() {
         bookController.buyBook(3, 2);
     }
+
+    /**
+     *
+     */
+    @Test
+    public void testBuyBook() {
+        Integer[] bookIds = {3, 4};
+        bookController.checkout(bookIds, 2);
+    }
 }

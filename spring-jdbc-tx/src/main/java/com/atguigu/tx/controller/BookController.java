@@ -1,6 +1,7 @@
 package com.atguigu.tx.controller;
 
 import com.atguigu.tx.service.BookService;
+import com.atguigu.tx.service.CheckoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +23,14 @@ public class BookController {
      * @param bookId 图书ID
      * @param userId 用户ID
      */
-    public void buyBook(Integer bookId, Integer userId){
+    public void buyBook(Integer bookId, Integer userId) {
         bookService.buyBook(bookId, userId);
+    }
+
+    @Autowired
+    private CheckoutService checkoutService;
+
+    public void checkout(Integer[] bookIds, Integer userId) {
+        checkoutService.checkout(bookIds, userId);
     }
 }
