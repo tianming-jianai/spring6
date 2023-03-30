@@ -914,4 +914,28 @@ classpath*:bean*.xml
 
 # 国际化：i18n
 
+## i18n概述
+
+## Java国际化
+
+## Spring6国际化
+
+### MessageSource接口
+
+常见实现类
+
+- ResourceBundleMessageSource
+  
+  这是个基于Java的ResourceBundle基础实现类，允许仅通过资源名加载国际化资源
+
+- ReloadableResourceBundlleMessageSource
+  
+  这个功能和第一个类的功能类似，多了个定时刷新功能，允许在不重启系统的情况下，更新资源的信息
+
+- StaticMessageSource
+  
+  它允许通过编程的方式通过国际化信息，一会我们可以通过这个来实现db中存储国际化信息的功能
+
+### 使用Spring6国际化
+
 # 数据校验：Validation
