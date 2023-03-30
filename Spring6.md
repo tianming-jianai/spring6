@@ -832,6 +832,31 @@ public class ResourceBean {
 }
 ```
 
+第二步：创建Spring配置文件，配置依赖注入
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="resourceBean" class="com.atguigu.di.ResourceBean">
+        <property name="resource" value="classpath:atguigu.txt"/>
+    </bean>
+</beans>
+```
+
+第三步：测试
+
+```java
+public class TestBean {
+    public static void main(String[] args) {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("bean-resource.xml");
+        ResourceBean resourceBean = ctx.getBean(ResourceBean.class);
+        resourceBean.parse();
+    }
+}
+```
+
 ## 应用程序上下文和资源路径
 
 # 国际化：i18n
