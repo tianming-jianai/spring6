@@ -859,6 +859,59 @@ public class TestBean {
 
 ## 应用程序上下文和资源路径
 
+不管以怎样的方式创建ApplicationContext实例，都需要为ApplicationContext指定配置文件，Spring允许使用一份或者多份XML配置文件。当程序创建ApplicationContext实例时，通常也是以Resource的方式来访问配置文件，所以ApplicationContext完全支持ClassPathResoure、FileSystemResource、ServletContextResource等访问资源方式。
+
+ApplicationContext确定资源访问策略通常有两种方式：
+
+- 使用ApplicationContext实现类指定访问策略
+
+- 使用前缀指定访问策略
+
+### 使用ApplicationContext实现类指定访问策略
+
+创建ApplicationContext对象时，通常可以实现如下实现类：
+
+- ClassPathXmlApplicationContext：对应使用ClassPathResource进行资源访问
+
+- FileSystemXmlApplicationContext：对应使用FileSystemResource进行资源访问
+
+- XmlWebApplicationContext：对应使用ServletContextResource进行资源访问
+
+当使用ApplicationContext的不同实现类时，就意味着Spring使用响应的资源访问策略
+
+效果前面已经演示
+
+### 使用前缀指定访问策略
+
+实验一：classpath前缀使用
+
+```bash
+classpath:bean.xml
+```
+
+实验二：classpath通配符使用
+
+```bash
+classpath*:bean.xml
+```
+
+当使用classpath*:前缀时，Spring将会搜索类加载路径下所有满足该规则的配置文件。
+
+如果不是采用classpath*:前缀，而是改为使用classpath:前缀，Spring则只加载第一个符合条件的xml文件
+
+注意：
+
+classpath*:前缀仅对ApplicationContext有效。实际情况是，创建ApplicationContext时，分别访问多个配置文件（通过ClassLoader的getResource实现）。因此，classpath*:前缀不可用于Resource。
+
+实验三：通配符其他使用
+
+```bash
+# 一次性加载多个配置文件的方式：指定配置文件时使用通配符
+classpath:bean*.xml
+# Spring允许将classpath*:前缀和通配符结合使用
+classpath*:bean*.xml
+```
+
 # 国际化：i18n
 
 # 数据校验：Validation

@@ -4,4 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="testBean" class="com.atguigu.resourceloaderaware.TestBean"></bean>
+
+    <bean id="user" class="com.atguigu.prefix.User"/>
 </beans>
