@@ -799,6 +799,39 @@ Resource res = ctx.getResource("http://loadlhost:8080/beans.xml");
 
 ## 使用Resource作为属性
 
+前面介绍了Spring提供的资源访问策略，但是这些依赖访问策略要么需要使用Resource实现类，要么需要使用ApplicationContext来获取资源。实际上，当应用程序中的Bean实例需要访问资源时，Spring有更好的解决方法：直接利用依赖注入。从这个意义上来看，Spring框架不仅充分利用了策略模式来简化资源访问，而且还将策略模式和IOC进行了充分结合，最大程度地简化了Spring资源访问。
+
+归纳起来，如果Bean实例需要访问资源，有如下两种解决方案：
+
+- 代码中获取Resource实例
+
+- 使用依赖注入
+
+对于第一种方式，当程序获取Resource实例时，总需要提供Resource所在的位置，不管提供FileSystemResource创建实例，还是通过ClassPathResource创建实例，或者通过ApplicationContext的getResource()方法获取实例，都需要提供资源位置。这意味着：资源所在的物理位置将被耦合到代码中，如果资源位置发生改变，则必须修改程序。因此通常建议采用第二种方法，让Spring为Bean实例依赖注入资源。
+
+实验：让Spring为Bean实例依赖注入资源
+
+第一步：创建依赖注入类，定义属性和方法
+
+```java
+public class ResourceBean {
+    Resource resource;
+
+    public Resource getResource() {
+        return resource;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
+    }
+
+    public void parse() {
+        System.out.println("Filename：" + resource.getFilename());
+        System.out.println("Description：" + resource.getDescription());
+    }
+}
+```
+
 ## 应用程序上下文和资源路径
 
 # 国际化：i18n
