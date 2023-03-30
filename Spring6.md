@@ -679,11 +679,7 @@ public class SpringJunitTest4 {
 
 ## JdbcTemplate
 
-
-
 ## 声明式事务
-
-
 
 ## 基于注解的声明式事务
 
@@ -697,11 +693,11 @@ public class SpringJunitTest4 {
 
 ```xml
 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-	<property name="dataSource" ref="druidDataSource"/>
+    <property name="dataSource" ref="druidDataSource"/>
 </bean>
 
 <!--开启事务的注解驱动
-	通过注解@Transactional所标识的方法或标识的类中所有的方法，都会事务被管理器管理事务
+    通过注解@Transactional所标识的方法或标识的类中所有的方法，都会事务被管理器管理事务
 -->
 <!--transaction-manage属性的默认值是transactionManager，如果事务管理器bean的id正好就是这个默认值，则可以省略这个属性-->
 <tx:annotation-driven transaction-manager="transactionManager"/>
@@ -734,8 +730,6 @@ public class SpringJunitTest4 {
 事务方法之间调用，事务如何使用
 
 ### 全注解配置事务
-
-
 
 ## 基于MXL的声明式事务
 
@@ -777,13 +771,35 @@ Java标准java.net.URL类和各种URL前缀的标准处理程序无法满足所�
 
 ## ResourceLoader接口
 
+Spring提供如下两个标志性接口：
+
+- ResourceLoader：该接口实现类的实例都可以获得一个Resource实例
+
+- ResourceLoaderAware：该接口实现类的实例将获得一个ResourceLoader的引用
+
+在ResourceLoader接口里面有如下方法：
+
+- Resource getResource(String location)：该接口仅有这个方法，用于返回一个Resource实例。ApplicationContext实现类都实现ResourceLoader接口，因此ApplicationContext可直接获取Resource实例。
+
+- 总结：
+
+Spring将采用和ApplicationContext相同的策略来访问资源。也就是说，如果ApplicationContext是FileSystemXmlApplicationContext，res就是FileSystemResource实例；如果ApplicationContext是ClassPathXmlApplicationContext，res就是ClassPathResource实例
+
+当Spring应用需要进行资源访问时，实际上并不需要直接使用Resource实现类，而是调用ResourceLoader实例的getResource()方法来获取资源，ResourceLoader将会负责选择Resource实现类，也就是确定具体的资源访问策略，从而将应用程序和具体的资源访问策略分离开来。
+
+另外，使用ApplicationContext访问资源时，可通过不同前缀指定强制使用指定的ClassPathResource、FileSystemResource等实现类。
+
+```java
+Resource res = ctx.getResource("classpath:bean.xml");
+Resource res = ctx.getResource("file:bean.xml");
+Resource res = ctx.getResource("http://loadlhost:8080/beans.xml");
+```
+
 ## ResourceLoaderAware接口
 
 ## 使用Resource作为属性
 
 ## 应用程序上下文和资源路径
-
-
 
 # 国际化：i18n
 
