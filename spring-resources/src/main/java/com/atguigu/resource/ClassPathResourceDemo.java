@@ -23,8 +23,8 @@ public class ClassPathResourceDemo {
         // 创建对象ClassPathResource
         ClassPathResource resource = new ClassPathResource(path);
 
-        System.out.println(resource.getFilename());
-        System.out.println(resource.getDescription());
+        System.out.println("Filename："+resource.getFilename());
+        System.out.println("Description："+resource.getDescription());
 
         // 获取文件内容
         try {
