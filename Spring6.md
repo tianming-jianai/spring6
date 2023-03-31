@@ -939,3 +939,27 @@ classpath*:bean*.xml
 ### 使用Spring6国际化
 
 # 数据校验：Validation
+
+问题：普通校验方式，校验代码和业务处理逻辑耦合在一起，新增一种校验逻辑要修改多个地方
+
+Spring校验优势：允许通过注解的方式来定义对象校验规则，把校验和业务逻辑分开，让代码编写更加方便。Spring Validation就是对Hibernate Validator进一步封装，方便在Spring中使用。
+
+Spring中有多种校验的方式：
+
+第一种：是通过实现org.springframework.validation.Validator接口，然后在代码中调用这个类
+
+第二种：按照BeanValidation方式来进行校验，即通过注解的方式
+
+第三种：基于方法实现校验
+
+第四种：实现自定义校验
+
+## 实现接口步骤
+
+- 引入依赖
+
+- 创建实体类，定义属性创建对应setter/getter
+
+- 创建类，实现接口，实现接口方法，编写校验逻辑
+
+- 测试
