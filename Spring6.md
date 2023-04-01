@@ -963,3 +963,17 @@ Spring中有多种校验的方式：
 - 创建类，实现接口，实现接口方法，编写校验逻辑
 
 - 测试
+
+## beanValidation注解实现
+
+spring默认有一个实现类LocalValidatorFactoryBean，它实现了上面BeanValidation中的接口，并且也实现类org.springframework.validation.Validator接口。
+
+- 创建配置类，配置LocalValidatorFactoryBean
+
+- 创建实体类，在属性上面使用注解定义校验规则
+
+- 创建校验器1. 原生校验器 2. spring 校验器
+
+- 测试
+
+ ![](C:\Users\shiga\AppData\Roaming\marktext\images\2023-03-31-21-28-24-image.png)
