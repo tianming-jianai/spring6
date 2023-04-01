@@ -975,5 +975,5 @@ spring默认有一个实现类LocalValidatorFactoryBean，它实现了上面Bean
 - 创建校验器1. 原生校验器 2. spring 校验器
 
 - 测试
-
- ![](C:\Users\shiga\AppData\Roaming\marktext\images\2023-03-31-21-28-24-image.png)
+  
+  ![](C:\Users\shiga\AppData\Roaming\marktext\images\2023-03-31-21-28-24-image.png)
