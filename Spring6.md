@@ -977,3 +977,25 @@ spring默认有一个实现类LocalValidatorFactoryBean，它实现了上面Bean
 - 测试
   
   ![](C:\Users\shiga\AppData\Roaming\marktext\images\2023-03-31-21-28-24-image.png)
+
+# AOT
+
+## JIT(just in time)
+
+动态编译，实时，边运行边编译
+
+在程序运行的时候，动态生成代码
+
+启动比较慢，编译时候需要占用运行时资源
+
+> 程序运行过程中，把字节码转换硬盘上直接运行机器码，部署到环境过程
+
+## AOT(ahead in time)
+
+运行前编译，提前编译
+
+可以把源代码直接转换机器码，启动快，内存占用低
+
+缺点：运行时候不能优化，程序安装时间过长
+
+> 在程序运行之前，就把字节码转换机器码
