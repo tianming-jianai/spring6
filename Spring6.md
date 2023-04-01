@@ -999,3 +999,19 @@ spring默认有一个实现类LocalValidatorFactoryBean，它实现了上面Bean
 缺点：运行时候不能优化，程序安装时间过长
 
 > 在程序运行之前，就把字节码转换机器码
+
+## Graalvm： Native Image
+
+http://graalvm.org/downloads
+
+- 第一步：安装GraalVM编辑器
+  
+  ```bash
+  # 1. 配置Graalvm环境变量
+  # 2. gu install native-image
+  # 3. gu list
+  ```
+
+- 第二步：安装C++编译环境
+
+- 第三步：编写Java代码，编译，构建
