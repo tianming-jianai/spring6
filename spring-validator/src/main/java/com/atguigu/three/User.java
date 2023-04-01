@@ -1,5 +1,6 @@
 package com.atguigu.three;
 
+import com.atguigu.four.CanNotBlank;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -26,10 +27,20 @@ public class User {
     @NotBlank(message = "手机号不能为空")
     private String phone;
 
+    @CanNotBlank
+    private String message;
+
     public User(String name, int age, String phone) {
         this.name = name;
         this.age = age;
         this.phone = phone;
+    }
+
+    public User(String name, int age, String phone, String message) {
+        this.name = name;
+        this.age = age;
+        this.phone = phone;
+        this.message = message;
     }
 
     public String getName() {
@@ -54,5 +65,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
